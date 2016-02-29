@@ -30,13 +30,11 @@ Public Function LogIn() As Boolean
                 traceDebug "failed to log in"
                 LogIn = False
             End If
-            
         End With
     Else
         traceDebug "already logged in"
         LogIn = True
     End If
-
 End Function
 
 Public Sub LogOut()
@@ -92,24 +90,6 @@ Public Function PostIssue(ByVal jSon As String) As Object
             Set PostIssue = Nothing
        End If
     End With
-End Function
-
-Private Function EncodeBase64(text As String) As String
-  Dim arrData() As Byte
-  arrData = StrConv(text, vbFromUnicode)
-
-  Dim objXML As MSXML2.DOMDocument60
-  Dim objNode As MSXML2.IXMLDOMElement
-
-  Set objXML = New MSXML2.DOMDocument60
-  Set objNode = objXML.createElement("b64")
-
-  objNode.DataType = "bin.base64"
-  objNode.nodeTypedValue = arrData
-  EncodeBase64 = objNode.text
-
-  Set objNode = Nothing
-  Set objXML = Nothing
 End Function
 
 Private Sub traceDebug(msg As String)
